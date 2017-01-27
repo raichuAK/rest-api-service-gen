@@ -1,0 +1,25 @@
+{
+  "name": "rest-api-client-generator",
+  "version": "1.0.0",
+  "description": "takes url as input & generate service layer in typescript; it makes http call & retrieves data...create a method named as passed to it...with mock http call & hardcoded response to the outcome",
+  "main": "genfile.js",
+  "scripts": {
+    "test": "generate file test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raichuAK/rest-api-service-gen.git"
+  },
+  "keywords": [
+    "rest-client"
+  ],
+  "author": "Pikachu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raichuAK/rest-api-service-gen/issues"
+  },
+  "homepage": "https://github.com/raichuAK/rest-api-service-gen#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
