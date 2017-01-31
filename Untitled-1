@@ -1,0 +1,12 @@
+
+     lineReader.on('close', function () {
+       console.log('closing the file :', body);
+       content = head+body+tail;
+       console.log("now writethe file");
+        fileSys.writeFile(fileName, content, function (err) {   
+            if (err) {
+                return console.log(err);
+            }
+            console.log("The file was saved!");
+        });
+     });
