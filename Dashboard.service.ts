@@ -7,17 +7,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
   
  
- @Injectable 
-export class Some { 
+@Injectable 
+export class Dashboard { 
 
-constructor (private http: Http) {} 
+   constructor (private http: Http) {} 
  
  
+   var retJson = ""  
  
  
- var retJson = ""  
- 
- 
- count() : new Observable(observer => {  
+   getcount() : new Observable(observer => {  
          observer.next(retJson);
      }); 
