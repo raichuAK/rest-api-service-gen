@@ -16,14 +16,20 @@ function createFileWithContents(fileName, content) {
         console.log('Line from file:'); 
         head = "import { Injectable }     from '@angular/core'; \n" +
             "import { Http, Response, Headers, RequestOptions } from '@angular/http'\n" +
-            "import {Observable} from 'rxjs/Rx';\n" + "\n \n" +
+            "import {Observable} from 'rxjs/Rx';\n" +
+            "import { Observable, Observer, Subject } from 'rxjs/Rx';\n"+
+            "import { Http, Response, URLSearchParams, Headers } from '@angular/http'; \n"+
+            "import { UrlParamService } from './urlParam.service'; \n"+
+            "import { UserAPIService } from './user.api.service'; \n" +
             "import 'rxjs/add/operator/map'; \n" +
             "import 'rxjs/add/operator/catch';" +
             "\n  \n \n" +
             "@Injectable \n" +
             "export class " + extFileName + " { \n" +
             "\n" +
-            "   constructor (private http: Http) {} \n \n \n";
+            "   private BASE_URL: string = '/rest/api/activities'; \n"+
+            "   private BASE_FILE_URL: string = 'rest/api'; \n"+
+            "   constructor (private http: Http, , private urlParam: UrlParamService) {} \n \n \n";
 
         tail = " }";
         var inputArgs = line.split("#"); var jsonVal = ''; var fileNameConstant = '.service.ts';
@@ -71,9 +77,9 @@ function createFileWithContents(fileName, content) {
 
                     var retJsonVarName = 'retJson' + methName;
                     body += "   var " + retJsonVarName + " = " + JSON.stringify(jsonVal) + "  \n \n \n" +
-                        "   " + methName + "() : new Observable(observer => {  \n " +
+                        "   public  " + methName + "() : new Observable(observer => {  \n " +
                         "        observer.next(" + retJsonVarName + ");" +
-                        "\n  " +
+                        "\n  observer.complete(); \n" +
                         "   }); \n \n ";
                     if (isInputdataFromFileOver) {
                         eventEmitter.emit('data_received');
